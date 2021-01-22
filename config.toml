@@ -27,6 +27,8 @@ hasCJKLanguage = true
 
   rtl = false
 
+  colorScheme = "auto"
+
   math = true
   custom_css = ["css/custom.css"]
 
@@ -43,7 +45,7 @@ hasCJKLanguage = true
     [[languages.en.menu.main]]
       name = "Wiki"
       weight = 2
-      url = "https://kiwi.ssine.cc:8086"
+      url = "https://kiwi.ssine.cc"
     [[languages.en.menu.main]]
       name = "Projects"
       weight = 3
@@ -59,7 +61,7 @@ hasCJKLanguage = true
     [[languages.zh-cn.menu.main]]
       name = "维基"
       weight = 2
-      url = "https://kiwi.ssine.cc:8086"
+      url = "https://kiwi.ssine.cc"
     [[languages.zh-cn.menu.main]]
       name = "项目"
       weight = 3
@@ -79,7 +81,7 @@ hasCJKLanguage = true
     [[languages.emoji.menu.main]]
       name = "🕸️"
       weight = 2
-      url = "https://kiwi.ssine.cc:8086"
+      url = "https://kiwi.ssine.cc"
     [[languages.emoji.menu.main]]
       name = "🏆"
       weight = 3
@@ -89,17 +91,17 @@ hasCJKLanguage = true
 # Social links
 [[params.social]]
   name = "Github"
-  icon = "fab fa-github fa-2x"
+  icon = "fa fa-github fa-2x"
   weight = 1
   url = "https://github.com/ssine/"
 [[params.social]]
   name = "QQ"
-  icon = "fab fa-qq fa-2x"
+  icon = "fa fa-qq fa-2x"
   weight = 2
   url = "https://wpa.qq.com/msgrd?v=3&uin=963366202&site=qq&menu=yes"
 [[params.social]]
   name = "Twitter"
-  icon = "fas fa-envelope fa-2x"
+  icon = "fa fa-envelope fa-2x"
   weight = 3
   url = "mailto:liu.siyao@qq.com"
 
