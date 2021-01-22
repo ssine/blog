@@ -1,0 +1,105 @@
+baseURL = "https://ssine.ink/"
+title = "Sine's Site"
+home = "Home"
+languageCode = "zh"
+
+theme = "hugo-coder"
+
+paginate = 50
+canonifyurls = true
+hasCJKLanguage = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[params]
+  author = "Sine"
+  info = "Computer Science Student"
+  description = "Sine's Site"
+  keywords = "blog,developer,personal"
+  # avatarurl = "images/avatar.jpg"
+
+  favicon_32 = "/favicon.ico"
+  favicon_16 = "/favicon.ico"
+
+  hidecredits = true
+  hidecopyright = true
+
+  rtl = false
+
+  math = true
+  custom_css = ["css/custom.css"]
+
+[languages]
+
+  [languages.en]
+    footercontent = "© 2016 - 2020 Liu Siyao"
+    languagename = "English"
+    [languages.en.menu]
+    [[languages.en.menu.main]]
+      name = "Blog"
+      weight = 1
+      url = "/posts/"
+    [[languages.en.menu.main]]
+      name = "Wiki"
+      weight = 2
+      url = "https://kiwi.ssine.cc:8086"
+    [[languages.en.menu.main]]
+      name = "Projects"
+      weight = 3
+      url = "/projects/"
+
+  [languages.zh-cn]
+    footercontent = "© 2016 - 2020 刘思尧"
+    languagename = "中文"
+    [[languages.zh-cn.menu.main]]
+      name = "博客"
+      weight = 1
+      url = "/posts/"
+    [[languages.zh-cn.menu.main]]
+      name = "维基"
+      weight = 2
+      url = "https://kiwi.ssine.cc:8086"
+    [[languages.zh-cn.menu.main]]
+      name = "项目"
+      weight = 3
+      url = "/projects/"
+
+  [languages.emoji]
+    footercontent = "©️ 2️⃣0️⃣1️⃣6️⃣ ➡️ 2️⃣0️⃣1️⃣9️⃣ 💎"
+    languagename = "emoji"
+    author = "💎's 🕸️"
+    info = "💻 👨‍🎓 (🚧, 🚫)"
+    description = "💎's 🕸️"
+    title = "💎's 🕸️"
+    [[languages.emoji.menu.main]]
+      name = "📝"
+      weight = 1
+      url = "/posts/"
+    [[languages.emoji.menu.main]]
+      name = "🕸️"
+      weight = 2
+      url = "https://kiwi.ssine.cc:8086"
+    [[languages.emoji.menu.main]]
+      name = "🏆"
+      weight = 3
+      url = "/projects/"
+
+
+# Social links
+[[params.social]]
+  name = "Github"
+  icon = "fab fa-github fa-2x"
+  weight = 1
+  url = "https://github.com/ssine/"
+[[params.social]]
+  name = "QQ"
+  icon = "fab fa-qq fa-2x"
+  weight = 2
+  url = "https://wpa.qq.com/msgrd?v=3&uin=963366202&site=qq&menu=yes"
+[[params.social]]
+  name = "Twitter"
+  icon = "fas fa-envelope fa-2x"
+  weight = 3
+  url = "mailto:liu.siyao@qq.com"
+

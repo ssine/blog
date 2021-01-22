@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SQL Visualizer</title>
+  <meta charset="utf-8">
+  <style>
+  #sql {
+    width: 600px;
+    height: 100px;
+    font-family: 'Consolas', 'Courier New', Courier, monospace;
+    font-size: 17px;
+  }
+  </style>
+</head>
+
+<body>
+
+<textarea id="sql">
+SELECT owner_name, name, balance
+FROM account
+INNER JOIN deposit ON account.account_id = deposit.account_id
+INNER JOIN bank ON bank.bank_id = deposit.bank_id
+WHERE balance > 2500 AND balance < 5000;</textarea>
+<br>
+<input type="checkbox" onclick="align_bottom = !align_bottom">Align input at bottom<br>
+<button id="generate" onclick="draw();">Generate AST</button>
+<div id="container"></div>
+<footer>built by Liu Siyao</footer>
+
+<script src="https://source-bed.oss-cn-beijing.aliyuncs.com/js/sql_vis/viz.js"></script>
+<script src="https://source-bed.oss-cn-beijing.aliyuncs.com/js/sql_vis/parser.js"></script>
+<script src="https://source-bed.oss-cn-beijing.aliyuncs.com/js/sql_vis/lite.render.js"></script>
+<script>
+// prepare parser
+parser.yy.extend = function() {
+  let target = arguments[0] || {};
+  if (typeof target != "object" && typeof target != "function") {
+    target = {};
+  }
+  for (let i = 1; i < arguments.length; i++) {
+    let source = arguments[i];
+    for (let key in source) {
+      target[key] = source[key];
+    }
+  }
+  return target;
+}
+
+let align_bottom = false;
+
+let viz = new Viz();
+
+function draw() {
+  // generate dot
+  dot = `
+  digraph G {
+    node [style="filled"];
+  `;
+  let node_cnt = 0;
+  let leaf_lst = [];
+
+  function put_node(node_label, shape, fill_color) {
+    dot += 'node_' + node_cnt + '[label="' + node_label + 
+            '", shape="' + shape + '", fillcolor="' + fill_color + '"];\n';
+    node_cnt ++;
+    return node_cnt - 1;
+  }
+
+  function link_node(from_id, to_id) {
+    if (from_id >= 0 && to_id >= 0)
+      dot += 'node_' + from_id + ' -> node_' + to_id + ';\n';
+  }
+
+  function dot_gen(tree) {
+    if (typeof tree == 'string') {
+      let id = put_node(tree, 'box', 'aquamarine');
+      leaf_lst.push(id);
+      return id;
+    } else if (typeof tree == 'object') {
+      let cur_id = put_node(tree.name, 'box', 'white');
+      tree.chlids.forEach(t => {
+        link_node(cur_id, dot_gen(t));
+      });
+      return cur_id;
+    }
+    return -1;
+  }
+
+  dot_gen(parser.parse(document.getElementById('sql').value));
+
+  if (align_bottom) {
+    dot += '{rank=same;';
+    leaf_lst.forEach((id) => {
+      dot += 'node_' + id + ';'
+    });
+    dot += '}';
+  }
+
+  dot += `}`;
+
+  // draw the digraph
+  viz.renderSVGElement(dot)
+  .then(function(element) {
+    let container = document.getElementById('container');
+    container.innerHTML = '';
+    container.appendChild(element);
+  })
+  .catch(error => {
+    // Create a new Viz instance (@see Caveats page for more info)
+    viz = new Viz();
+    
+    // Possibly display the error
+    console.error(error);
+  });
+}
+</script>
+</body>
+</html>
