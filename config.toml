@@ -2,6 +2,7 @@ baseURL = "https://ssine.ink/"
 title = "Sine's Site"
 home = "Home"
 languageCode = "zh"
+defaultContentLanguage = "zh-cn"
 
 theme = "hugo-coder"
 
