@@ -111,7 +111,66 @@
     }
 
     let days = [];
-    let details = [];
+    let dateToDetailsData = {};
+    let detailsContainer = document.getElementById('detail');
+
+    const genDetailEl = (date) => {
+      let detail_el = document.createElement('div');
+      detail_el.className = 'detail';
+      detail_el.innerHTML = date;
+      if (dateToDetailsData[date]) {
+        detail_el.innerHTML += '<br>' + dateToDetailsData[date];
+      }
+      detail_el.id = date;
+      detail_el.clicked = 0;
+      detailsContainer.appendChild(detail_el);
+      return detail_el
+    };
+
+    const removeDetailEl = (date) => {
+      document.getElementById(date).remove();
+    };
+
+    const onmouseenter = (ev) => {
+      let detail_el = document.getElementById(ev.srcElement.date);
+      if (!detail_el) {
+        detail_el = genDetailEl(ev.srcElement.date);
+      }
+      if (!detail_el.clicked) {
+        detail_el.style.display = 'block';
+        detail_el.style.left = ev.pageX + 10 + 'px';
+        detail_el.style.top = ev.pageY + 1 + 'px';
+        detail_el.style.zIndex = display_count++;
+      }
+    };
+    const onmousemove = (ev) => {
+      let detail_el = document.getElementById(ev.srcElement.date);
+      if (!detail_el.clicked) {
+        detail_el.style.left = ev.pageX + 10 + 'px';
+        detail_el.style.top = ev.pageY + 1 + 'px';
+      }
+    };
+    const onmouseleave = (ev) => {
+      let detail_el = document.getElementById(ev.srcElement.date);
+      if (!detail_el.clicked) {
+        detail_el.remove()
+      }
+    }
+    const onclick = (ev) => {
+      let detail_el = document.getElementById(ev.srcElement.date);
+      if (detail_el.clicked) {
+        detail_el.clicked = 0;
+        detail_el.style.borderStyle = 'none';
+        ev.srcElement.style.borderWidth = '1px';
+        ev.srcElement.style.margin = '1px';
+      } else {
+        detail_el.clicked = 1;
+        detail_el.style.borderStyle = 'solid';
+        ev.srcElement.style.borderWidth = '2px';
+        ev.srcElement.style.margin = '0px';
+      }
+    }
+
     for (let cur = new Date(+birth); cur < death; cur.setDate(cur.getDate() + 1)) {
       let el = document.createElement('div');
       el.className = 'day';
@@ -124,49 +183,10 @@
       el.hue = 180;
       days.push(el);
 
-      let detail_el = document.createElement('div');
-      detail_el.className = 'detail';
-      detail_el.innerText = el.date;
-      detail_el.id = el.date;
-      detail_el.clicked = 0;
-      details.push(detail_el);
-
-      el.onmouseenter = (ev) => {
-        let detail_el = document.getElementById(ev.srcElement.date);
-        if (!detail_el.clicked) {
-          detail_el.style.display = 'block';
-          detail_el.style.left = ev.pageX + 10 + 'px';
-          detail_el.style.top = ev.pageY + 1 + 'px';
-          detail_el.style.zIndex = display_count++;
-        }
-      }
-      el.onmousemove = (ev) => {
-        let detail_el = document.getElementById(ev.srcElement.date);
-        if (!detail_el.clicked) {
-          detail_el.style.left = ev.pageX + 10 + 'px';
-          detail_el.style.top = ev.pageY + 1 + 'px';
-        }
-      }
-      el.onmouseleave = (ev) => {
-        let detail_el = document.getElementById(ev.srcElement.date);
-        if (!detail_el.clicked) {
-          detail_el.style.display = 'none';
-        }
-      }
-      el.onclick = (ev) => {
-        let detail_el = document.getElementById(ev.srcElement.date);
-        if (detail_el.clicked) {
-          detail_el.clicked = 0;
-          detail_el.style.borderStyle = 'none';
-          ev.srcElement.style.borderWidth = '1px';
-          ev.srcElement.style.margin = '1px';
-        } else {
-          detail_el.clicked = 1;
-          detail_el.style.borderStyle = 'solid';
-          ev.srcElement.style.borderWidth = '2px';
-          ev.srcElement.style.margin = '0px';
-        }
-      }
+      el.onmouseenter = onmouseenter;
+      el.onmousemove = onmousemove;
+      el.onmouseleave = onmouseleave;
+      el.onclick = onclick;
     }
 
     let container = document.createElement('div');
@@ -175,9 +195,6 @@
       container.appendChild(days[wk]);
     }
     document.getElementById('body').appendChild(container);
-    for (let idx in details) {
-      document.getElementById('detail').appendChild(details[idx]);
-    }
 
     let cur_age = 0;
     for (let cur = new Date(+birth); cur < death; cur.setFullYear(cur.getFullYear() + 1)) {
@@ -232,11 +249,13 @@
             if (!day_el.no_credit_color)
               day_el.style.backgroundColor = getColor(day_el.hue, day_el.credit);
 
-            if (details[el_idx].innerHTML == '') {
-              details[el_idx].innerHTML = ev.innerHTML;
+            dateStr = getDateStr(cur_date);
+            if (!dateToDetailsData[dateStr]) {
+              dateToDetailsData[dateStr] = ev.innerHTML;
             } else {
-              details[el_idx].innerHTML += '<br>' + ev.innerHTML;
+              dateToDetailsData[dateStr] += '<br>' + ev.innerHTML;
             }
+
             ev.childNodes.forEach((cn) => {
               let emo = is_emoji(cn.textContent.trim());
               if (cn.nodeType === 3 && emo) {
@@ -266,10 +285,11 @@
                 day_el.style.backgroundColor = getColor(day_el.hue, day_el.credit);
               // console.log(getColor(day_el.hue, day_el.credit));
 
-              if (details[el_idx].innerHTML == '') {
-                details[el_idx].innerHTML = ev.innerHTML;
+              dateStr = getDateStr(start);
+              if (!dateToDetailsData[dateStr]) {
+                dateToDetailsData[dateStr] = ev.innerHTML;
               } else {
-                details[el_idx].innerHTML += '<br>' + ev.innerHTML;
+                dateToDetailsData[dateStr] += '<br>' + ev.innerHTML;
               }
             }
 
