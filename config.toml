@@ -36,7 +36,7 @@ hasCJKLanguage = true
 [languages]
 
   [languages.en]
-    footercontent = "© 2016 - 2020 Liu Siyao"
+    footercontent = "© 2016 - 2021 Liu Siyao"
     languagename = "English"
     [languages.en.menu]
     [[languages.en.menu.main]]
@@ -53,7 +53,7 @@ hasCJKLanguage = true
       url = "/projects/"
 
   [languages.zh-cn]
-    footercontent = "© 2016 - 2020 刘思尧"
+    footercontent = "© 2016 - 2021 刘思尧"
     languagename = "中文"
     [[languages.zh-cn.menu.main]]
       name = "博客"
