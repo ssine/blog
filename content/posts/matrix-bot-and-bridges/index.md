@@ -301,3 +301,7 @@ docker restart synapse
 尽管如此，我还是想有个不依赖恶心人的腾讯的聊天机器人，考察了很多聊天软件之后，发现没有符合需求的服务 ( GFW 内外皆可用，不受审查，数据安全，开放 Bot API ) 。 只好采用自建 Matrix 聊天服务器的方式，虽然需要额外付出运维成本，但是前面的需求都能满足。 搭建好之后就把大部分个人相关的聊天机器人的工作迁移了过来，总算能一劳永逸的喘口气了。
 
 最近 [受人启发](https://wechaty.js.org/2021/02/14/ziki-wechaty-helper/) ，搞了一个在特定 room 跟 bot 说话，自动把内容同步到 wiki 的对应条目上的功能，感觉方便了很多，可以作为平时想要记点什么的 inbox。
+
+## Tips
+
+如果长时间积累下来的图片视频占用空间很大，可以参考官方的 [Admin API](https://github.com/matrix-org/synapse/blob/develop/docs/admin_api/media_admin_api.md#delete-local-media-by-date-or-size) 来按照时间和大小筛选媒体文件并删除，需要加 admin 权限用户的 header ，找 header 的方式跟建立 bot 时一样。
