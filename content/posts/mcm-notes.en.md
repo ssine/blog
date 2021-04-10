@@ -1,11 +1,7 @@
 ---
-title: MCM笔记
+title: MCM Notes
 date: '2018-02-02'
-dateformat: 'Y-m-d H:i'
-tags:
-    - 数学建模
-categories:
-    - 笔记
+dateformat: 'Y-m-d'
 ---
 
 __Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
