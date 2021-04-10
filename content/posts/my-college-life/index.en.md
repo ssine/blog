@@ -3,7 +3,7 @@ title: My College Life
 date: '2019-10-23'
 ---
 
-__Note: This passage is mainly translated by Google translator, please turn to the Chinese version for more accurate passage if possible.__
+__Note: This passage is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
 
 After leaving MSRA a few weeks ago, I started to do nothing, sleep late, play games, and are reluctant to accept the fact that I am about to start applying for a school. After the senior year, I gradually fell out of school. I only had one class per week. After graduation, I had to say goodbye to my undergraduate life. It is also time to summarize the experience of the university and start a new life.
 
