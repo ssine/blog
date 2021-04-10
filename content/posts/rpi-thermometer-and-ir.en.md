@@ -3,7 +3,7 @@ title: "Raspberry Pi for temperature and humidity reporting and infrared control
 date: 2021-04-07T00:48:32+08:00
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 For a while, I was tossing around collecting various data, one of which was the temperature and humidity of the room. I bought a humidifier at the beginning, but I don’t know how it works, so I bought a Xiaomi thermometer and hygrometer. Unexpectedly, exporting data from this thermometer and hygrometer is very troublesome. It needs to be sent to the mailbox with the mobile APP, so I wanted to create an automatic one. The device for collecting and reporting temperature and humidity, Raspberry Pi + sensor is the best choice.
 

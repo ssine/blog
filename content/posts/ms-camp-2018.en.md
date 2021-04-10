@@ -4,7 +4,7 @@ date: '2018-08-25'
 dateformat: 'Y-m-d'
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 Microsoft’s student summer camps have been held for 18 consecutive years. Although there are some colors to promote Microsoft’s technology, they are also very sentimental.
 

@@ -3,7 +3,7 @@ title: Cambridge Travel Notes
 date: '2018-07-28'
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 A two-week summer course at Cambridge University from 7.29-8.12. Funded by the School of Computer Science and undertaken by the CUDC UK-China Development Center.
 

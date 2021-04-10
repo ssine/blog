@@ -4,7 +4,7 @@ date: '2018-02-15'
 dateformat: 'Y-m-d'
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 From February 9th to 13th, 2018, I participated in the first mathematics modeling competition with very insufficient preparation. In order to better communicate with teammates, I rented a homestay in Tianjin to play games. On the last day of the 13th, I had a heavy meeting with the high school class (Can Nian).
 

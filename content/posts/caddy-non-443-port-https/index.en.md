@@ -3,7 +3,7 @@ title: "Use Caddy to enable HTTPS on ports other than 443"
 date: 2020-10-17T21:18:29+08:00
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 Recently I started with HPE ProLiant MicroServer Gen10 Plus and used it as a home server to avoid long-term rental of cloud servers. Although home servers have obvious advantages in cost performance compared with cloud servers, they lack an important content of cloud services: fixed public IP. We usually use the public IP in order to be able to access the server anytime and anywhere, and this requirement can also be achieved through DDNS, but access requires a domain name instead of a bare IP.
 

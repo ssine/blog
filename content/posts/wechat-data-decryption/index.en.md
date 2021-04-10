@@ -3,7 +3,7 @@ title: "WeChat History Extraction"
 date: 2020-04-03T00:17:06+08:00
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 Recently, I need to share some chat records with others. Because the large amount of screenshots is too troublesome, I want to take the WeChat data directly and back it up by the way. Follow the common process, take the EnMicroMsg.db file, find the password, and export. However, when the database password was obtained, the mobile phone imei used to register WeChat was untestable, and the current mobile phone failed. Therefore, we can only use brute force cracking. See below for details.
 

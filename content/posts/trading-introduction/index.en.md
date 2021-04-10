@@ -3,7 +3,7 @@ title: "Trading Intro"
 date: 2020-04-05T11:04:41+08:00
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 # stock
 

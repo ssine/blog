@@ -4,7 +4,7 @@ date: 2020-05-22T18:22:38+08:00
 draft: false
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 The final paper is completed in Word, here is a summary of how I used Word to achieve some relatively complex typesetting requirements.
 

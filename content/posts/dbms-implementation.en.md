@@ -3,7 +3,7 @@ title: 'DBMS Implementation'
 date: '2019-01-24'
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 # Overview
 

@@ -4,7 +4,7 @@ date: 2020-06-26T21:42:42+08:00
 draft: false
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 Recently, I encountered an interesting problem when writing the check-in bot in the quiz group, so let's talk about it.
 

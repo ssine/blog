@@ -4,7 +4,7 @@ date: '2018-02-02'
 dateformat: 'Y-m-d'
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 Make a simple record of MCM in nine days...
 

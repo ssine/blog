@@ -3,7 +3,7 @@ title: "Win10 Multi-monitor DPI Adjustment"
 date: 2021-03-07T18:21:11+08:00
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 Win10 currently has poor support for multiple different dpi displays. In the display settings, the canvas size of the display is determined by the resolution of the display rather than the physical size of the display. This leads to annoying misalignment when a window spans different monitors, and the mouse cannot be aligned when the mouse is moved across different monitors. At present, most of the tutorials are aligned by modifying the zoom and layout in the display settings, but this method does not solve the problem most of the time. One is that the optional zoom value is only a few integers, and the other is that the window will still be displayed when the window is spanned. Render at the native resolution of another monitor.
 

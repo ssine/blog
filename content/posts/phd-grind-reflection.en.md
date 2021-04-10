@@ -8,7 +8,7 @@ categories:
     - Essay
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 There is still no clear plan for my future. There are many ways to go in the future. Beiyou Zhibo, foreign school insurance research, overseas study and study/reading blogs must be slowly understood. At the same time, you need to figure out what you want, but these also require more experience to make a decision. *Ph.D. Grind* is a memoir of a Ph.D. student in computer science at Stanford University from 2006 to 2012. I have simply read this little book these days and have a general impression of the doctoral life.
 

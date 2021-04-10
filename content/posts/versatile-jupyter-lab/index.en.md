@@ -3,7 +3,7 @@ title: "Building a Jupyter Lab Container with Multiple Kernels"
 date: 2021-03-07T19:08:13+08:00
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 Usually there are some small ideas that need to be tested. For example, to see if TypeScript can support this syntax, use Python to do two questions and quickly process some files. At this time, it is more cumbersome to open an editor to write a script and then run it. Putting the environment of various languages on the machine is also messy and not portable. Therefore, a Jupyter Lab service was deployed, which can be written through the browser anytime, anywhere. Ideas for codes in various languages.
 

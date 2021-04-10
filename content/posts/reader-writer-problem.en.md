@@ -6,7 +6,7 @@ tags:
     - Multithreading
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 This is an experiment in the operating system class, using the semaphore mechanism to realize the reader-writer problem. Use n threads to represent n readers and writers.
 

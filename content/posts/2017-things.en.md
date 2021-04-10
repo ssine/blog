@@ -4,7 +4,7 @@ date: '2018-02-16'
 dateformat: 'Y-m-d H:i'
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 Record what I have done this year, although I have almost forgot it, recalling it according to the notes and calendar. It feels like another year has been wasted. In fact, there are many things that have happened and done, but when it comes to major events, they are not very good.
 

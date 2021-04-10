@@ -3,7 +3,7 @@ title: "Self-hosted chat server, chatbot and multi-platform bridging"
 date: 2021-03-27T00:36:39+08:00
 ---
 
-__Note: This article is mainly translated by Google translator, please turn to the Chinese version for more accurate expression if possible.__
+__Note: This article is automatically translated, please turn to the Chinese version for more accurate expression if possible.__
 
 # Preface
 
