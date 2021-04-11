@@ -130,7 +130,7 @@ dhtDevice.exit()
 
 红外接收器使用的是 1838 红外接收头封装的一个模块，发射器就是普通的红外二极管串联一个 10 欧级别的电阻，不过发射角只有 30° 挺不方便，最好还是买个角度大一点的。
 
-连好线之后就是软件部分。 红外的接收有一个好用不火的 python 包 [ircodec](https://github.com/kentwait/ircodec) 。使用很简单，首先安装 ( 需要 root ) ：
+连好线之后就是软件部分。 红外的收发有一个好用不火的 python 包 [ircodec](https://github.com/kentwait/ircodec) 。使用很简单，首先安装 ( 需要 root ) ：
 
 ```bash
 pip3 install pigpio ircodec
@@ -155,7 +155,7 @@ controller.save_as('test.json')
 读取并发射：
 
 ```python
-controller = CommandSet.load('another_testtv.json')
+controller = CommandSet.load('test.json')
 controller.emit('volume_up')
 ```
 

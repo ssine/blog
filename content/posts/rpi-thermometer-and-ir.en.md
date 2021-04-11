@@ -132,7 +132,7 @@ The purpose of infrared receiving and transmitting is to automatically turn on a
 
 The infrared receiver uses a module encapsulated by the 1838 infrared receiver. The transmitter is an ordinary infrared diode in series with a 10 ohm resistor. However, it is inconvenient to have an emission angle of only 30°. It is better to buy a larger angle.
 
-After the line is connected, it is the software part. There is a python package that is easy to use and not fire for infrared receiver[ircodec](https://github.com/kentwait/ircodec) . It is very simple to use, first install (root is required):
+After the line is connected, it is the software part. There is a python package that is easy to use (but not hot) for infrared receiving and sending: [ircodec](https://github.com/kentwait/ircodec) . It is very simple to use, first install (root is required):
 
 ```bash
 pip3 install pigpio ircodec
@@ -157,7 +157,7 @@ controller.save_as('test.json')
 Read and launch:
 
 ```python
-controller = CommandSet.load('another_testtv.json')
+controller = CommandSet.load('test.json')
 controller.emit('volume_up')
 ```
 
