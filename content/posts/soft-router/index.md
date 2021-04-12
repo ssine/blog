@@ -42,7 +42,7 @@ draft: true
 
 ## 全局 VPN
 
-
+PassWall 是个不错的插件，支持 socks、ss、ssr、v2ray、brook 和
 
 ## 主机加速器
 
