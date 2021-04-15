@@ -1,0 +1,292 @@
+    Profile: 记录：睡着 (3)
+    	Restore: no
+    	Variables: [ %action:has value ]
+    	Event: Intent Received [ Action:com.mc.miband.tasker.fellAsleep Cat:None Cat:None Scheme:* Mime Type:* ]
+    Enter: Anon (31)
+
+    Profile: 记录：醒来 (4)
+    	Restore: no
+    	Variables: [ %action:has value ]
+    	Event: Intent Received [ Action:com.mc.miband.tasker.wokeUp Cat:None Cat:None Scheme:* Mime Type:* ]
+    Enter: Trace POST (2)
+
+    Profile: 开空调 (7)
+    	Restore: no
+    	Event: NFC Tag [ ID:04CD8033100297 Content:* ]
+    Enter: Anon (10)
+
+    Profile: 记录：到家 (8)
+    	Cooldown: 600 Restore: no
+    	Variables: [ %action:has value ]
+    	State: Wifi Connected [ SSID:爷斋小二 MAC:* IP:* Active:Any ]
+    Enter: Anon (30)
+
+    Profile: 记录：离家 (11)
+    	Restore: no
+    	Variables: [ %action:has value ]
+    	Event: NFC Tag [ ID:04A6DA32100289 Content:离家 ]
+    Enter: Anon (50)
+
+    Profile: 记录：上床 (12)
+    	Restore: no
+    	Variables: [ %action:has value ]
+    	Event: NFC Tag [ ID:04EC0533100289 Content:上床 ]
+    Enter: Anon (48)
+
+    Profile: 记录：睡觉 (13)
+    	Restore: no
+    	Variables: [ %action:has value ]
+    	Event: NFC Tag [ ID:042AF032100289 Content:睡觉 ]
+    Enter: Anon (49)
+
+    Profile: 记录：到公司 (14)
+    	Cooldown: 600 Restore: no
+    	Variables: [ %action:has value ]
+    	State: Wifi Connected [ SSID:ByteDance Inc MAC:* IP:* Active:Any ]
+    Enter: Anon (28)
+
+    Profile: 记录：离公司 (16)
+    	Cooldown: 600 Restore: no
+    	Variables: [ %action:has value ]
+    	Event: NFC Tag [ ID:048AFF32100289 Content:下班 ]
+    Enter: Anon (9)
+
+    Profile: Sync Miband (19)
+    	Restore: no
+    	Time:  Every 3h
+    Enter: 导出手环数据 (6)
+
+    Profile: Anon (23)
+    	Restore: no
+    	State: Not Wifi Connected [ SSID:* MAC:* IP:* Active:Any ]
+    Enter: Anon (27)
+
+    Profile: Anon (25)
+    	Restore: no
+    	State: Wifi Connected [ SSID:* MAC:* IP:* Active:Any ]
+    Enter: Anon (29)
+
+    Profile: Phone Usage - Change (38)
+    	Restore: no
+    	Event: App Changed [ Output Variables:* Package:* ]
+    Enter: Anon (39)
+
+    Profile: Phone Usage - Screen (40)
+    	Restore: no
+    	Event: Display Off
+    Enter: Anon (41)
+
+    Profile: Sync Phone Usage (43)
+    	Priority: 4 Restore: no
+    	Time:  Every 1h
+    Enter: Anon (44)
+
+    Profile: 记录：下床 (51)
+    	Restore: no
+    	Variables: [ %action:has value ]
+    	Event: NFC Tag [ ID:04A23233100289 Content:下床 ]
+    Enter: Anon (52)
+
+    Profile: 开灯 (56)
+    	Restore: no
+    	Event: NFC Tag [ ID:04CD3033100289 Content:开灯 ]
+    Enter: Anon (57)
+
+    Profile: 关空调 (58)
+    	Restore: no
+    	Event: NFC Tag [ ID:04CD3033100297 Content:* ]
+    Enter: Anon (59)
+
+Scene: HTML Popup
+	P:900x750	L:-1x-1 
+
+		Orientation: System
+		Background Colour: #00000000
+		Action Bar Style: System
+		Title: HTML Popup
+		Subtitle: 
+		Icon: null
+		Tab Labels: 
+
+Element: Web1/WebView
+	Geometry:
+		P:0,0 900x750 L:-1,-1 -1x-1
+	Content:
+		Mode: Direct
+		Source: 
+		Allow Phone Access: On
+		Self Handle Links: Off
+		App Cache API: Off
+		DB API: Off
+		Support Popups: Off
+
+Scene: Popup
+	P:900x750	L:-1x-1 
+
+		Orientation: System
+		Background Colour: #FF000000
+		Action Bar Style: System
+		Title: Popup
+		Subtitle: 
+		Icon: null
+		Tab Labels: 
+
+Element: Title/Text
+	Geometry:
+		P:18,0 882x216 L:6,0 294x72
+	Content:
+		Text: 标题
+		Text Size: 32
+		Text Width Scale Percent: 100
+		Text Colour: #FF80CBC4
+		Font: 
+		Position: Left
+		Vertical Fit Mode: None
+		Text Format: Plain Text
+
+Element: Header/Rectangle
+	Geometry:
+		P:0,216 900x9 L:0,216 900x9
+	Content:
+		Shader: None
+		Colour: #77333333
+		End Colour: 
+		Border Width: 0
+		Border Colour: #FF000000
+		Corner Radius: 0
+		Rounded Corners: All
+
+Element: Text1/Text
+	Geometry:
+		P:21,237 858x438 L:21,237 858x438
+	Content:
+		Text: 文本
+		Text Size: 26
+		Text Width Scale Percent: 100
+		Text Colour: #FFFFFFFF
+		Font: 
+		Position: Centre
+		Vertical Fit Mode: Reduce Text Size
+		Text Format: Plain Text
+
+Task:     Trace POST (2)
+    	A1: Wait [ MS:0 Seconds:10 Minutes:0 Hours:0 Days:0 ] 
+    	A2: HTTP Request [  Method:GET URL:https://api.ssine.cc/life-tracer/log-action?action=%action Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    
+Task:     导出手环数据 (6)
+    	A1: Send Intent [ Action:com.mc.miband.syncData Cat:None Mime Type: Data: Extra: Extra: Extra: Package: Class: Target:Broadcast Receiver ] 
+    	A2: Wait [ MS:0 Seconds:30 Minutes:0 Hours:0 Days:0 ] 
+    	A3: Variable Set [ Name:%start_time To:%TIMEMS-24*2*60*60*1000 Recurse Variables:Off Do Maths:On Append:Off Max Rounding Digits:3 ] 
+    	A4: Send Intent [ Action:com.mc.miband.taskerExportAllSpreadsheetData Cat:None Mime Type: Data: Extra:start:%start_time Extra: Extra: Package: Class: Target:Broadcast Receiver ] 
+    	A5: Wait [ MS:0 Seconds:30 Minutes:0 Hours:0 Days:0 ] 
+    	A6: Run Shell [ Command:curl -u sine:liu6si4yao1 -T /storage/emulated/0/miband/mibandnotify/export/exportHeart.csv https://fs.ssine.cc/remote.php/dav/files/sine/Backup/Fitness/exportHeart.csv Timeout (Seconds):120 Use Root:Off Store Output In: Store Errors In: Store Result In: ] 
+    	A7: Run Shell [ Command:curl -u sine:liu6si4yao1 -T /storage/emulated/0/miband/mibandnotify/export/exportSleep.csv https://fs.ssine.cc/remote.php/dav/files/sine/Backup/Fitness/exportSleep.csv Timeout (Seconds):120 Use Root:Off Store Output In: Store Errors In: Store Result In: ] 
+    	A8: Run Shell [ Command:curl -u sine:liu6si4yao1 -T /storage/emulated/0/miband/mibandnotify/export/exportSleepDetails.csv https://fs.ssine.cc/remote.php/dav/files/sine/Backup/Fitness/exportSleepDetails.csv Timeout (Seconds):120 Use Root:Off Store Output In: Store Errors In: Store Result In: ] 
+    	A9: Run Shell [ Command:curl -u sine:liu6si4yao1 -T /storage/emulated/0/miband/mibandnotify/export/exportWeight.csv https://fs.ssine.cc/remote.php/dav/files/sine/Backup/Fitness/exportWeight.csv Timeout (Seconds):120 Use Root:Off Store Output In: Store Errors In: Store Result In: ] 
+    	A10: Run Shell [ Command:curl -u sine:liu6si4yao1 -T /storage/emulated/0/miband/mibandnotify/export/exportSteps.csv https://fs.ssine.cc/remote.php/dav/files/sine/Backup/Fitness/exportSteps.csv Timeout (Seconds):120 Use Root:Off Store Output In: Store Errors In: Store Result In: ] 
+    	A11: HTTP Request [  Method:GET URL:https://api.ssine.cc/sync/mongo?items=miband Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    
+Task:     Anon (9)
+    	A1: HTTP Request [  Method:GET URL:https://api.ssine.cc/life-tracer/log-action?action=离公司 Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    
+Task:     Anon (10)
+    	A1: HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=aircond.warm_on Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    
+Task:     备份QQ数据集 (17)
+    	A1: Run Shell [ Command:curl -u sine:liu6si4yao1 -T /data/data/com.tencent.mobileqq/databases/963366202.db https://fs.ssine.cc/remote.php/dav/files/sine/Backup/IM/QQ/963366202.db Timeout (Seconds):120 Use Root:On Store Output In: Store Errors In: Store Result In: ] 
+    	A2: Run Shell [ Command:curl -u sine:liu6si4yao1 -T /data/data/com.tencent.mobileqq/databases/slowtable_963366202.db https://fs.ssine.cc/remote.php/dav/files/sine/Backup/IM/QQ/slowtable_963366202.db Timeout (Seconds):120 Use Root:On Store Output In: Store Errors In: Store Result In: ] 
+    	A3: Run Shell [ Command:curl -u sine:liu6si4yao1 -T /data/data/com.tencent.mobileqq/files/kc https://fs.ssine.cc/remote.php/dav/files/sine/Backup/IM/QQ/key.txt Timeout (Seconds):120 Use Root:On Store Output In: Store Errors In: Store Result In: ] 
+    
+Task:     备份微信数据集 (18)
+    	A1: Run Shell [ Command:curl -u sine:liu6si4yao1 -T /data/data/com.tencent.mm/MicroMsg/a0bb9000accf04db0fded3027a2d185c/EnMicroMsg.db https://fs.ssine.cc/remote.php/dav/files/sine/Backup/IM/Wechat/EnMicroMsg.db Timeout (Seconds):120 Use Root:On Store Output In: Store Errors In: Store Result In: ] 
+    
+Task:     Anon (27)
+    	A1: Variable Set [ Name:%LastWIFI To:%CurrentWIFI Recurse Variables:Off Do Maths:Off Append:Off Max Rounding Digits:3 ] 
+    	A2: Variable Set [ Name:%CurrentWIFI To:. Recurse Variables:Off Do Maths:Off Append:Off Max Rounding Digits:3 ] 
+    
+Task:     Anon (28)
+    	A1: Wait [ MS:0 Seconds:5 Minutes:0 Hours:0 Days:0 ] 
+    	A2: If [ %CurrentWIFI neq %LastWIFI ]
+    	A3: HTTP Request [  Method:GET URL:https://api.ssine.cc/life-tracer/log-action?action=%action Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A4: End If 
+    
+Task:     Anon (29)
+    	A1: Test Net [ Type:Wifi SSID Data: Store Result In:%CurrentWIFI ] 
+    
+Task:     Anon (30)
+    	A1: Wait [ MS:0 Seconds:5 Minutes:0 Hours:0 Days:0 ] 
+    	A2: If [ %CurrentWIFI neq %LastWIFI ]
+    	A3: HTTP Request [  Method:GET URL:https://api.ssine.cc/life-tracer/log-action?action=%action Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A4: End If 
+    
+Task:     Anon (31)
+    	A1: HTTP Request [  Method:GET URL:https://api.ssine.cc/life-tracer/log-action?action=%action Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A2: Wait [ MS:0 Seconds:0 Minutes:15 Hours:0 Days:0 ] 
+    	A3: Media Control [ Cmd:Pause Simulate Media Button:On Package/App Name:网易云音乐 Use Notification If Available:Off ] 
+    
+Task:     还 (32)
+    	A1: Media Control [ Cmd:Pause Simulate Media Button:On Package/App Name:网易云音乐 Use Notification If Available:Off ] 
+    
+Task:     Anon (39)
+    	A1: If [ %CurrentAPP neq . ]
+    	A2: Variable Set [ Name:%usageTime To:%TIMES-%APPOpenTime Recurse Variables:Off Do Maths:On Append:Off Max Rounding Digits:3 ] 
+    	A3: JavaScriptlet [ Code:let l = []
+    try {
+      l = JSON.parse(global("APPUsageList"))
+    } catch (err) {
+      l = []
+    }
+    l.push({ts: global("APPOpenTime"), name: global("CurrentAPP"), package: global("CurrentPackage"), time: global("usageTime")})
+    setGlobal("APPUsageList", JSON.stringify(l)) Libraries: Auto Exit:On Timeout (Seconds):45 ] 
+    	A4: [X] Flash [ Text:%CurrentAPP：%usageTime Long:Off ] 
+    	A5: End If 
+    	A6: Variable Set [ Name:%CurrentAPP To:%app_name Recurse Variables:Off Do Maths:Off Append:Off Max Rounding Digits:3 ] 
+    	A7: Variable Set [ Name:%CurrentPackage To:%app_package Recurse Variables:Off Do Maths:Off Append:Off Max Rounding Digits:3 ] 
+    	A8: Variable Set [ Name:%APPOpenTime To:%TIMES Recurse Variables:Off Do Maths:Off Append:Off Max Rounding Digits:3 ] 
+    
+Task:     Anon (41)
+    	A1: If [ %CurrentAPP neq . ]
+    	A2: Variable Set [ Name:%usageTime To:%TIMES-%APPOpenTime Recurse Variables:Off Do Maths:On Append:Off Max Rounding Digits:3 ] 
+    	A3: JavaScriptlet [ Code:let l = []
+    try {
+      l = JSON.parse(global("APPUsageList"))
+    } catch (err) {
+      l = []
+    }
+    l.push({ts: global("APPOpenTime"), name: global("CurrentAPP"), package: global("CurrentPackage"), time: global("usageTime")})
+    setGlobal("APPUsageList", JSON.stringify(l)) Libraries: Auto Exit:On Timeout (Seconds):45 ] 
+    	A4: End If 
+    	A5: Variable Set [ Name:%CurrentAPP To:. Recurse Variables:Off Do Maths:Off Append:Off Max Rounding Digits:3 ] 
+    	A6: Variable Set [ Name:%APPOpenTime To:. Recurse Variables:Off Do Maths:Off Append:Off Max Rounding Digits:3 ] 
+    
+Task:     Anon (44)
+    	A1: HTTP Request [  Method:POST URL:https://api.ssine.cc/phone_usage Headers: Query Parameters: Body:%APPUsageList File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A2: Variable Set [ Name:%APPUsageList To:[] Recurse Variables:Off Do Maths:Off Append:Off Max Rounding Digits:3 ] 
+    
+Task:     Anon (48)
+    	A1: HTTP Request [  Method:GET URL:https://api.ssine.cc/life-tracer/log-action?action=%action Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A2: HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=light.nightmode Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    
+Task:     Anon (49)
+    	A1: HTTP Request [  Method:GET URL:https://api.ssine.cc/life-tracer/log-action?action=%action Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A2: HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=light.switch Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    
+Task:     Anon (50)
+    	A1: HTTP Request [  Method:GET URL:https://api.ssine.cc/life-tracer/log-action?action=离家 Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A2: [X] HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=light.switch Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A3: [X] HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=aircond.warm_off Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    
+Task:     Anon (52)
+    	A1: HTTP Request [  Method:GET URL:https://api.ssine.cc/life-tracer/log-action?action=%action Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A2: HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=light.switch Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A3: HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=light.hue_up&times=10 Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A4: HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=light.brightness_up&times=10 Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    
+Task:     Anon (57)
+    	A1: HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=light.switch Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A2: HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=light.hue_up&times=10 Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    	A3: HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=light.brightness_up&times=10 Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    
+Task:     Anon (59)
+    	A1: HTTP Request [  Method:GET URL:http://192.168.2.74:8000/send_ir?cmd=aircond.warm_off Headers: Query Parameters: Body: File To Send: File/Directory To Save With Output: Timeout (Seconds):30 Trust Any Certificate:Off Automatically Follow Redirects:Off Use Cookies:Off ] 
+    
