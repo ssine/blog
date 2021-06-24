@@ -240,14 +240,19 @@
       for (let idx = 0; idx < events.length; idx++) {
         if (events[idx].nodeType == 1) {
           let ev = events[idx];
-          let content = ev.innerHTML;
-          if (content.startsWith('*')) {
-            if (password) {
-              content = CryptoJS.AES.decrypt(content.substr(1), password).toString(CryptoJS.enc.Utf8);
-            } else {
-              content = '<i>encrypted message</i>'
+          ev.childNodes.forEach(n => {
+            if (n.nodeType === Node.TEXT_NODE) {
+              if (n.textContent.startsWith('*')) {
+                if (password) {
+                  n.textContent = CryptoJS.AES.decrypt(n.textContent.substr(1), password).toString(CryptoJS.enc.Utf8);
+                } else {
+                  n.textContent = '*encrypted message'
+                }
+              }
             }
-          }
+          })
+          const content = ev.innerHTML;
+
           if (ev.getAttribute('date') != null) {
             // one-day event
             let cur_date = new Date(Date.parse(ev.getAttribute('date')));
