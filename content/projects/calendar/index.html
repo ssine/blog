@@ -4,6 +4,7 @@
 <head>
   <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
   <title>L.I.F.E</title>
   <style>
     body {
@@ -81,6 +82,20 @@
   <div id="left-margin"></div>
   <div id="body"></div>
   <div id="detail"></div>
+  <center>
+    <input id="password" /><button onclick="setPassword()">set password</button>
+  </center>
+
+  <script>
+    function setPassword() {
+      const pw = document.getElementById('password').value;
+      document.cookie = `password=${pw}`;
+      location.reload();
+    }
+    function getCookie(sKey) {
+      return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[-.+*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
+    }
+  </script>
 
   <script>
     let display_count = 0;
@@ -99,6 +114,7 @@
     const expected_years = 102;
     const death = new Date(1998 + expected_years, 4, 30);
     const today = new Date();
+    const password = getCookie('password');
 
     function getIdxByDate(date) {
       return Math.floor((date.getTime() - birth.getTime()) / (1000 * 3600 * 24));
@@ -224,6 +240,14 @@
       for (let idx = 0; idx < events.length; idx++) {
         if (events[idx].nodeType == 1) {
           let ev = events[idx];
+          let content = ev.innerHTML;
+          if (content.startsWith('*')) {
+            if (password) {
+              content = CryptoJS.AES.decrypt(content.substr(1), password).toString(CryptoJS.enc.Utf8);
+            } else {
+              content = '<i>encrypted message</i>'
+            }
+          }
           if (ev.getAttribute('date') != null) {
             // one-day event
             let cur_date = new Date(Date.parse(ev.getAttribute('date')));
@@ -251,9 +275,9 @@
 
             dateStr = getDateStr(cur_date);
             if (!dateToDetailsData[dateStr]) {
-              dateToDetailsData[dateStr] = ev.innerHTML;
+              dateToDetailsData[dateStr] = content;
             } else {
-              dateToDetailsData[dateStr] += '<br>' + ev.innerHTML;
+              dateToDetailsData[dateStr] += '<br>' + content;
             }
 
             ev.childNodes.forEach((cn) => {
@@ -287,9 +311,9 @@
 
               dateStr = getDateStr(start);
               if (!dateToDetailsData[dateStr]) {
-                dateToDetailsData[dateStr] = ev.innerHTML;
+                dateToDetailsData[dateStr] = content;
               } else {
-                dateToDetailsData[dateStr] += '<br>' + ev.innerHTML;
+                dateToDetailsData[dateStr] += '<br>' + content;
               }
             }
 
