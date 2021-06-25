@@ -89,7 +89,7 @@
   <script>
     function setPassword() {
       const pw = document.getElementById('password').value;
-      document.cookie = `password=${pw}`;
+      document.cookie = `password=${pw};max-age=${365 * 24 * 3600}`;
       location.reload();
     }
     function getCookie(sKey) {
